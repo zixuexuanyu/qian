@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>千</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/full_page/jquery.fullPage.css">
+    <style>
+    	.section{overflow: hidden;}
+		.home .tit{position:relative;top:-3%;margin:0 auto;width:756px;height:153px;background:url(image/tit_h1.png) no-repeat left top;}
+		.home .tit{
+			-webkit-transform:scale(0.5, 0.5);
+			-ms-transform:scale(0.5, 0.5);
+			-o-transform:scale(0.5, 0.5);
+			transform:scale(0.5, 0.5);
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+    		-webkit-transition-delay:0.7s;
+    		-o-transition-delay:0.7s;
+    		transition-delay:0.7s;
+		}
+    	.home.active .tit{
+    		-webkit-transform:scale(1, 1);
+    		-ms-transform:scale(1, 1);
+    		-o-transform:scale(1, 1);
+    		transform:scale(1, 1);
+    	}
+		
+		.home .cont ul{margin:30px auto 0;width: 400px;text-align: center;}
+		.home .cont li{display: inline-block;*display: inline;*zoom: 1;margin:0 10px;width: 175px;height: 50px;border:1px solid #fff}
+		.home .cont li a{padding-left:30px;line-height: 50px;font-size:20px;color:#fff;text-align: center;}
+		.home .cont .iphone{background:url(image/ico_iphone.png) no-repeat 15px center;}
+		.home .cont .android{background:url(image/ico_android.png) no-repeat 5px center;}
+		.home .erw_con{margin-top:40px;text-align: center;}
+		.home .erw_con .tits{font-size:18px;line-height:50px;font-weight: bold;color:#000;}
+    	.home .bg{position:absolute;top: 0;left: 0;width: 200%;height: 200%;z-index: -1;background:#aaf}
+    	.home .bg img{margin:0 auto;min-width: 50%;min-height: 50%;}
+		.conv .img_con,.conv .txt_con{position: absolute;left: 50%;z-index: 1;}
+		.conv .img_con{top:50%;margin-top:-315px;margin-left: -600px;width: 400px;height: 630px;background:url(image/conv_img.png) no-repeat left top;}
+		.conv .img_con{
+    		opacity:0;
+			-webkit-transform:translate(-1000px,0);
+			-moz-transform:translate(-1000px,0);
+			-ms-transform:translate(-1000px,0);
+			-o-transform:translate(-1000px,0);
+			transform:translate(-1000px,0);
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.conv.active .img_con{
+    		opacity:1;
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+		}
+		.conv .txt_con{top:30%;margin-left: 60px;width: 520px;}
+		.conv .txt_con .tits{font-size:54px;color:#000;}
+		.conv .txt_con .tits{
+    		opacity:0;
+			-webkit-transform:translate(500px,0);
+			-moz-transform:translate(500px,0);
+			-ms-transform:translate(500px,0);
+			-o-transform:translate(500px,0);
+			transform:translate(500px,0);
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.conv.active .txt_con .tits{
+    		opacity:1;
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+    		-webkit-transition-delay:0.5s;
+    		-o-transition-delay:0.5s;
+    		transition-delay:0.5s;
+		}
+		.conv .txt_con .conts{font-size:16px;color:#787878;}
+		.conv .txt_con .conts{
+    		opacity:0;
+			-webkit-transform:translate(0,50px);
+			-moz-transform:translate(0,50px);
+			-ms-transform:translate(0,50px);
+			-o-transform:translate(0,50px);
+			transform:translate(0,50px);
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.conv.active .txt_con .conts{
+    		opacity:1;
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+    		-webkit-transition-delay:1.2s;
+    		-o-transition-delay:1.2s;
+    		transition-delay:1.2s;
+		}
+		.conv .bg{height: 100%;background:url(image/conv_bg.png) no-repeat 36% 55%;}
+		.conv .bg{
+    		opacity:0.1;
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.conv.active .bg{
+    		opacity:1;
+    		-webkit-transition-delay:0.3s;
+    		-o-transition-delay:0.3s;
+    		transition-delay:0.3s;
+		}
+		.safe .img_con,.safe .txt_con{position: absolute;left: 50%;z-index: 1;}
+		.safe .img_con{top:50%;margin-top:-315px;margin-left: 60px;width: 400px;height: 630px;background:url(image/safe_img.png) no-repeat left top;}
+		.safe .img_con{
+    		opacity:0;
+			-webkit-transform:translate(500px,0);
+			-moz-transform:translate(500px,0);
+			-ms-transform:translate(500px,0);
+			-o-transform:translate(500px,0);
+			transform:translate(500px,0);
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.safe.active .img_con{
+    		opacity:1;
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+		}
+		.safe .txt_con{top:30%;margin-left: -500px;width: 520px;}
+		.safe .txt_con .tits{font-size:54px;color:#000;}
+		.safe .txt_con .tits{
+    		opacity:0;
+			-webkit-transform:translate(-1000px,0);
+			-moz-transform:translate(-1000px,0);
+			-ms-transform:translate(-1000px,0);
+			-o-transform:translate(-1000px,0);
+			transform:translate(-1000px,0);
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.safe.active .txt_con .tits{
+    		opacity:1;
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+    		-webkit-transition-delay:0.5s;
+    		-o-transition-delay:0.5s;
+    		transition-delay:0.5s;
+		}
+		.safe .txt_con .conts{font-size:16px;color:#787878;}
+		.safe .txt_con .conts{
+    		opacity:0;
+			-webkit-transform:translate(0,50px);
+			-moz-transform:translate(0,50px);
+			-ms-transform:translate(0,50px);
+			-o-transform:translate(0,50px);
+			transform:translate(0,50px);
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.safe.active .txt_con .conts{
+    		opacity:1;
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+    		-webkit-transition-delay:1.2s;
+    		-o-transition-delay:1.2s;
+    		transition-delay:1.2s;
+		}
+		.safe .bg{height: 100%;background:url(image/safe_bg.png) no-repeat 30% 55%;}
+		.safe .bg{
+    		opacity:0.1;
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.safe.active .bg{
+    		opacity:1;
+    		-webkit-transition-delay:0.3s;
+    		-o-transition-delay:0.3s;
+    		transition-delay:0.3s;
+		}
+		.password .img_con,.password .txt_con{position: absolute;left: 50%;z-index: 1;}
+		.password .img_con{top:50%;margin-top:-315px;margin-left: -600px;width: 400px;height: 630px;background:url(image/password_img.png) no-repeat left top;}
+		.password .img_con{
+    		opacity:0;
+			-webkit-transform:translate(-1000px,0);
+			-moz-transform:translate(-1000px,0);
+			-ms-transform:translate(-1000px,0);
+			-o-transform:translate(-1000px,0);
+			transform:translate(-1000px,0);
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.password.active .img_con{
+    		opacity:1;
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+		}
+		.password .txt_con{top:30%;margin-left: 60px;width: 520px;}
+		.password .txt_con .tits{font-size:54px;color:#000;}
+		.password .txt_con .tits{
+    		opacity:0;
+			-webkit-transform:translate(500px,0);
+			-moz-transform:translate(500px,0);
+			-ms-transform:translate(500px,0);
+			-o-transform:translate(500px,0);
+			transform:translate(500px,0);
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.password.active .txt_con .tits{
+    		opacity:1;
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+    		-webkit-transition-delay:0.5s;
+    		-o-transition-delay:0.5s;
+    		transition-delay:0.5s;
+		}
+		.password .txt_con .conts{font-size:16px;color:#787878;}
+		.password .txt_con .conts{
+    		opacity:0;
+			-webkit-transform:translate(0,50px);
+			-moz-transform:translate(0,50px);
+			-ms-transform:translate(0,50px);
+			-o-transform:translate(0,50px);
+			transform:translate(0,50px);
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.password.active .txt_con .conts{
+    		opacity:1;
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+    		-webkit-transition-delay:1.2s;
+    		-o-transition-delay:1.2s;
+    		transition-delay:1.2s;
+		}
+		.password .bg{height: 100%;background:url(image/password_bg.png) no-repeat 40% 55%;}
+		.password .bg{
+    		opacity:0.1;
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.password.active .bg{
+    		opacity:1;
+    		-webkit-transition-delay:0.3s;
+    		-o-transition-delay:0.3s;
+    		transition-delay:0.3s;
+		}
+		.download{background:#dfd4c4 url(image/download_bg.jpg) no-repeat center top;background-size:cover;}
+		.download .img_con img{position: absolute;left: 50%;bottom:30%;margin-left: -119px;font-size:0;line-height:0}
+		.download .img_con .img1{margin-left:-167px;z-index: 3;}
+		.download .img_con .img2{margin-left:-430px;z-index: 1;}
+		.download .img_con .img2{
+			-webkit-box-shadow:-2px 0 12px 0px rgba(0,0,0,0.3);
+			box-shadow:-2px 0 12px 0px rgba(0,0,0,0.3);
+			-webkit-transform:translate(311px,0);
+			-moz-transform:translate(311px,0);
+			-ms-transform:translate(311px,0);
+			-o-transform:translate(311px,0);
+			transform:translate(311px,0);
+			-webkit-transition:all 1.5s;
+			-o-transition:all 1.5s;
+			transition:all 1.5s;
+		}
+		.download.active .img_con .img2{
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+    		-webkit-transition-delay:0.5s;
+    		-o-transition-delay:0.5s;
+    		transition-delay:0.5s;
+		}
+		.download .img_con .img3{margin-left:-330px;z-index: 2;}
+		.download .img_con .img3{
+			-webkit-box-shadow:-2px 0 12px 0px rgba(0,0,0,0.3);
+			box-shadow:-2px 0 12px 0px rgba(0,0,0,0.3);
+			-webkit-transform:translate(211px,0);
+			-moz-transform:translate(211px,0);
+			-ms-transform:translate(211px,0);
+			-o-transform:translate(211px,0);
+			transform:translate(211px,0);
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.download.active .img_con .img3{
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+    		-webkit-transition-delay:0.3s;
+    		-o-transition-delay:0.3s;
+    		transition-delay:0.3s;
+		}
+		.download .img_con .img4{margin-left:30px;z-index: 2;}
+		.download .img_con .img4{
+			-webkit-box-shadow:2px 0 12px 0px rgba(0,0,0,0.3);
+			box-shadow:2px 0 12px 0px rgba(0,0,0,0.3);
+			-webkit-transform:translate(-211px,0);
+			-moz-transform:translate(-211px,0);
+			-ms-transform:translate(-211px,0);
+			-o-transform:translate(-211px,0);
+			transform:translate(-211px,0);
+			-webkit-transition:all 1s;
+			-o-transition:all 1s;
+			transition:all 1s;
+		}
+		.download.active .img_con .img4{
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+    		-webkit-transition-delay:0.3s;
+    		-o-transition-delay:0.3s;
+    		transition-delay:0.3s;
+		}
+		.download .img_con .img5{margin-left:200px;z-index: 1;}
+		.download .img_con .img5{
+			-webkit-box-shadow:2px 0 12px 0px rgba(0,0,0,0.3);
+			box-shadow:2px 0 12px 0px rgba(0,0,0,0.3);
+			-webkit-transform:translate(-311px,0);
+			-moz-transform:translate(-311px,0);
+			-ms-transform:translate(-311px,0);
+			-o-transform:translate(-311px,0);
+			transform:translate(-311px,0);
+			-webkit-transition:all 1.5s;
+			-o-transition:all 1.5s;
+			transition:all 1.5s;
+		}
+		.download.active .img_con .img5{
+			-webkit-transform:translate(0,0);
+			-moz-transform:translate(0,0);
+			-ms-transform:translate(0,0);
+			-o-transform:translate(0,0);
+			transform:translate(0,0);
+    		-webkit-transition-delay:0.5s;
+    		-o-transition-delay:0.5s;
+    		transition-delay:0.5s;
+		}
+		.download .txt_con{position: absolute;left: 0;bottom: 0;width: 100%;height:30%;background:#3b1b32 url(image/download_txtbg.jpg) no-repeat center center;background-size:cover;}
+		.download .txt_con .left{position: absolute;top:10%;left: 50%;margin-left: -600px;width: 400px;height: 150px;background:url(image/download_txtimg.png) no-repeat left top;}
+		.download .txt_con .right{position: absolute;top:10%;left: 50%;right: 0;}
+		.download .txt_con .tits{font-size:24px;line-height:60px;color:#fff;}
+		.download .txt_con .conts img{vertical-align: top;}
+		.download .txt_con .conts a{padding-left:30px;display: inline-block;margin:0 10px;width: 175px;height: 80px;border:1px solid #fff;line-height: 80px;font-size:20px;color:#fff;text-align: center;}
+		.download .txt_con .conts .iphone{background:url(image/ico_iphone.png) no-repeat 15px center;}
+		.download .txt_con .conts .android{background:url(image/ico_android.png) no-repeat 5px center}
+		.godown { *display: none; position: absolute; left: 50%; bottom: 20px; z-index: 100; width: 50px; height: 53px; margin-left: -25px;background-image: url(image/godown.png);}
+		.godown:hover{opacity:0.8;filter:alpha(opacity=80);}
+		.btn_top{position: absolute;right: 50%;bottom:0;margin-left: -34px;width:68px;height:34px;background:url(image/backtop.png) no-repeat center center;}
+		.btn_top:hover{opacity:0.8;filter:alpha(opacity=80)}
+    </style>
+	<!--[if lt IE 9]>
+	<script src="/themes/soonmes_qzw_v2/script/html5shiv.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div id="fullpage">
+		
+		<!--page1-->
+		<div class="section home">
+			<h1 class="tit no_txt">哈哈</h1>
+			<div class="cont">
+				<ul>
+					<li class="iphone"><a target="_blank" href="#">IOS7.0+</a></li>
+					<li class="android"><a href="#">Android2.3+</a></li>
+				</ul>
+				<div class="erw_con">
+					<div class="tits">嘿嘿</div>
+					<div class="conts">
+						<img src="image/erw.png" height="122" width="122" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="bg"><!--<img src="image/home_bg.jpg" alt="">--></div>
+			<a class="godown" href="#page2"><span></span></a>
+		</div>
+		
+		<!--page2-->
+		<div class="section conv"> 
+			<div class="img_con">
+				
+			</div>
+			<div class="txt_con">
+				<h3 class="tits">呵呵</h3>
+				<div class="conts">呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵</div>
+			</div>
+			<div class="bg"></div>
+			<a class="godown" href="#page3"><span></span></a>
+		</div>
+		
+		<!--page3-->
+		<div class="section safe"> 
+			<div class="img_con">
+				
+			</div>
+			<div class="txt_con">
+				<h3 class="tits">嘻嘻</h3>
+				<div class="conts">嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻</div>
+			</div>
+			<div class="bg"></div>
+			<a class="godown" href="#page4"><span></span></a>
+		</div>
+		
+		<!--page4-->
+		<div class="section password"> 
+			<div class="img_con">
+				
+			</div>
+			<div class="txt_con">
+				<h3 class="tits">咪咪</h3>
+				<div class="conts">咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪咪</div>
+			</div>
+			<div class="bg"></div>
+			<a class="godown" href="#page5"><span></span></a>
+		</div>
+		
+		<!--page5-->
+		<div class="section download">
+			<div class="img_con">
+				<img class="img1" src="image/download_img1.png" alt="">
+				<img class="img2" src="image/download_img2.png" alt="">
+				<img class="img3" src="image/download_img3.png" alt="">
+				<img class="img4" src="image/download_img4.png" alt="">
+				<img class="img5" src="image/download_img5.png" alt="">
+			</div>
+			<div class="txt_con">
+				<div class="left"></div>
+				<div class="right">
+					<h3 class="tits">啦啦啦啦啦啦</h3>
+					<div class="conts">
+						<img src="image/ft_erw.png" height="80" width="81" alt="">
+						<a class="iphone" target="_blank" href="#">IOS7.0+</a>
+						<a class="android" href="#">Android2.3+</a>
+					</div>
+				</div>
+			</div>
+			<a class="btn_top" href="#page1"><span></span></a>
+		</div>
+		
+		
+	</div>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.qian360.js"></script>
+    <script src="js/common2.js"></script>
+    <script src="js/full_page/jquery.easings.min.js"></script>
+    <script src="js/full_page/jquery.fullPage.js"></script>
+	<script>
+		$(function() {
+			$('#fullpage').fullpage({
+				sectionsColor: ['', '#f6f6f6','#fff', '#f6f6f6','#fff']
+				,anchors: ['page1', 'page2', 'page3', 'page4', 'page5']
+				,navigation: true
+			});
+		});
+	</script>
+</body>
+</html>
